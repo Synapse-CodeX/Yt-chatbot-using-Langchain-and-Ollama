@@ -14,23 +14,26 @@ A local RAG (Retrieval-Augmented Generation) chatbot that lets you query any You
 
 ---
 
-## 🗂️ Project Structure
-
+## 📁 Project Structure
+```
 yt-chatbot-langchain/
 ├── ingestion/
-│   └── youtube_loader.py       # Fetches YouTube transcript
+│   └── youtube_loader.py    # Fetches YouTube transcript
 ├── processing/
-│   └── splitter.py             # Splits transcript into chunks
+│   └── splitter.py          # Splits transcript into chunks
 ├── vector_store/
-│   └── faiss_store.py          # Creates FAISS vector store
+│   └── faiss_store.py       # Creates FAISS vector store
 ├── retrieval/
-│   └── retriever.py            # Retrieves relevant chunks
+│   └── retriever.py         # Retrieves relevant chunks
 ├── utils/
-│   └── prompt.py               # Prompt template
-├── app.py                      # Main pipeline
-├── config.py                   # Model config and env loading
+│   └── prompt.py            # Prompt template
+├── generation/
+│   └── llm.py               # Ollama LLM call
+├── app.py                   # Main pipeline
+├── config.py                # Model config and env loading
 ├── requirements.txt
-└── .env                        # API keys (never committed)
+└── .env                     # API keys (never committed)
+```
 
 ---
 
