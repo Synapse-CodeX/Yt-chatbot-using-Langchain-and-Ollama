@@ -1,3 +1,5 @@
+import argparse
+
 from ingestion.youtube_loader import load_transcript
 from processing.splitter import split_text
 from vector_store.faiss_store import create_vector_store
@@ -26,7 +28,19 @@ def build_chain(retriever, prompt, llm):
 
 
 def main():
-    video_id = "8TZMtslA3UY"
+    parser = argparse.ArgumentParser(description="YouTube RAG Chatbot")
+    parser.add_argument(
+        "--video-id",
+        type=str,
+        help="YouTube video ID to query (e.g. 8TZMtslA3UY)",
+    )
+    args = parser.parse_args()
+
+    video_id = args.video_id
+    if not video_id:
+        video_id = input("Enter YouTube video ID (from youtube.com/watch?v=VIDEO_ID): ").strip()
+    if not video_id:
+        raise ValueError("A YouTube video ID is required.")
 
     # Step 1: Load transcript
     print("Loading transcript...")
@@ -58,14 +72,18 @@ def main():
     # Step 7: Build the RAG chain
     chain = build_chain(retriever, prompt, llm)
 
-    # Step 8: Run a query
-    query = "Can you summarize the video?"
-    print(f"\nRunning query: {query}\n")
-
-    result = chain.invoke(query)
-
-    print("===== FINAL ANSWER =====\n")
-    print(result)
+    # Step 8: Interactive Q&A loop
+    print("\nChatbot ready! Type 'exit' or 'quit' to stop.\n")
+    while True:
+        query = input("Your question: ").strip()
+        if query.lower() in ("exit", "quit"):
+            break
+        if not query:
+            continue
+        result = chain.invoke(query)
+        print("\n===== ANSWER =====")
+        print(result)
+        print()
 
 
 if __name__ == "__main__":

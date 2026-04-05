@@ -8,4 +8,5 @@ HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 OLLAMA_MODEL = "mistral"
 
-os.environ["HF_TOKEN"] = HUGGINGFACE_API_KEY
+if HUGGINGFACE_API_KEY:
+    os.environ["HF_TOKEN"] = HUGGINGFACE_API_KEY
