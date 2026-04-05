@@ -1,0 +1,53 @@
+# 🔐 Environment variables
+.env
+.env.*
+
+# 🐍 Python cache / compiled
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 🧪 Virtual environments
+venv/
+env/
+.venv/
+
+# 📦 Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# 📊 Jupyter 
+.ipynb_checkpoints/
+
+# 🧠 FAISS / vector DB files 
+*.faiss
+*.pkl
+*.index
+
+# 📝 Logs
+*.log
+
+# 🖥 VS Code settings 
+.vscode/
+
+# 🧪 pytest / coverage
+.coverage
+htmlcov/
+
+# 🗃 OS files
+.DS_Store
+Thumbs.db
+
+# 🔑 HuggingFace cache 
+.cache/
+huggingface/
+
+# 🚀 Streamlit 
+.streamlit/
+
+# 🧠 model weights
+*.bin
+*.pt
+*.safetensors
