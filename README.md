@@ -18,17 +18,20 @@ A local RAG (Retrieval-Augmented Generation) chatbot that lets you query any You
 ```
 yt-chatbot-langchain/
 ├── ingestion/
+│   ├── __init__.py
 │   └── youtube_loader.py    # Fetches YouTube transcript
 ├── processing/
+│   ├── __init__.py
 │   └── splitter.py          # Splits transcript into chunks
 ├── vector_store/
+│   ├── __init__.py
 │   └── faiss_store.py       # Creates FAISS vector store
 ├── retrieval/
+│   ├── __init__.py
 │   └── retriever.py         # Retrieves relevant chunks
 ├── utils/
+│   ├── __init__.py
 │   └── prompt.py            # Prompt template
-├── generation/
-│   └── llm.py               # Ollama LLM call
 ├── app.py                   # Main pipeline
 ├── config.py                # Model config and env loading
 ├── requirements.txt
@@ -68,7 +71,11 @@ ollama pull mistral
 
 ### 6. Run
 ```bash
+# Interactive prompt for video ID and questions
 python app.py
+
+# Or pass the YouTube video ID directly as an argument
+python app.py --video-id 8TZMtslA3UY
 ```
 
 ---
